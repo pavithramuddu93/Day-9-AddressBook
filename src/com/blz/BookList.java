@@ -1,9 +1,10 @@
 package com.blz;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookList {
-
     static ArrayList<AddressBook> books = new ArrayList<AddressBook>();
 
     void addBook(String name, AddressBook book) {
@@ -31,6 +32,19 @@ public class BookList {
         value.email = scan.nextLine();
         System.out.println("Enter zip : ");
         value.zip = scan.nextLine();
+    }
+
+    void showPersons(String placeName) {
+        if(books.size() == 0) {
+            System.out.println("Booklist is empty");
+            return;
+        }
+        for (int i = 0; i < books.size(); i++) {
+            List<Contact> matchedContact = books.get(i).list.stream().filter(x -> x.city.equals(placeName)|| x.state.equals(placeName))
+                    .collect(Collectors.toList());
+            matchedContact.stream().forEach(x -> System.out.println(x.firstName));
+
+        }
     }
 
     void operations(ArrayList<AddressBook> books, int i) {
