@@ -1,6 +1,7 @@
 package com.blz;
 import java.util.Scanner;
 public class Contact {
+
     //// variables representation////
     String firstName;
     String lastName;
