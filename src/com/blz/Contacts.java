@@ -5,7 +5,7 @@ public class Contacts {
     private long phoneNumber, zip;
 
     Contacts(String firstName, String lastName, String email, String city, String state, long phoneNumber, long zip) {
-
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
