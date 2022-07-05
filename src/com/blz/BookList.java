@@ -35,6 +35,7 @@ public class BookList {
     }
 
     void showPersonsByCity(String placeName) {
+        int count = 0;
         if (books.size() == 0) {
             System.out.println("Booklist is empty");
             return;
@@ -42,12 +43,15 @@ public class BookList {
         for (int i = 0; i < books.size(); i++) {
             List<Contact> matchedContact = books.get(i).list.stream().filter(x -> x.city.equals(placeName))
                     .collect(Collectors.toList());
+            count += books.get(i).list.stream().filter(x -> x.city.equals(placeName)).count();
             matchedContact.stream().forEach(x -> System.out.println(x.firstName));
 
         }
+        System.out.println("Number of persons are : " + count);
     }
 
     void showPersonsByState(String placeName) {
+        int count = 0;
         if (books.size() == 0) {
             System.out.println("Booklist is empty");
             return;
@@ -55,9 +59,10 @@ public class BookList {
         for (int i = 0; i < books.size(); i++) {
             List<Contact> matchedContact = books.get(i).list.stream().filter(x -> x.state.equals(placeName))
                     .collect(Collectors.toList());
+            count += books.get(i).list.stream().filter(x -> x.state.equals(placeName)).count();
             matchedContact.stream().forEach(x -> System.out.println(x.firstName));
-
         }
+        System.out.println("Number of persons are : " + count);
     }
 
     void operations(ArrayList<AddressBook> books, int i) {
